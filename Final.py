@@ -1,6 +1,7 @@
 """
 Author: Bauti Gallino
 Credit: Vinzent
+Background Image: http://img4.wikia.nocookie.net/__cb20140610025745/ravens-talon/images/a/af/Metal_floor_by_goeshadow13-d5zy027.jpg
 """
 from ggame import App, Sprite, ImageAsset, Frame
 from ggame import SoundAsset, Sound, TextAsset, Color
@@ -16,23 +17,26 @@ black = Color(0x000000, 1.0)
 thinborder=LineStyle(1, black)
 
 class Background(Sprite):
-    asset = ImageAsset("images/starfield.jpg")
-    height= 512
-    width= 512
+    asset = ImageAsset("images/Metal_floor_by_goeshadow13-d5zy027.jpg")
+    height= 100
+    width= 100
     
     def __init__(self, position):
         super().__init__(Background.asset, position)
 
 class player1(Sprite):
-    asset = RectangleAsset(100, 50, thinborder, blue)
+    asset = RectangleAsset(130, 20, thinborder, blue)
 
     def __init__(self, position):
         super().__init__(player1.asset, position)
 class BrickBreaker(App):
     def __init__(self, width, height):
         super().__init__(width, height)
-        Backround((0, 0))
-        player1((500, 500))
+        for x in range(self.width//Background.width + 1):
+            for y in range(self.height//Background.height + 1):
+                Background((x*Background.width, y*Background.height))
+        Background((0, 0))
+        player1((800, 750))
 
-app = BrickBreaker(1897, 935)
+app = BrickBreaker(0, 0)
 app.run()
