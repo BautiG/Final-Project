@@ -14,7 +14,7 @@ green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 black = Color(0x000000, 1.0)
 
-thinborder=LineStyle(1, black)
+thinborder=LineStyle(2, red)
 
 class Background(Sprite):
     asset = ImageAsset("images/Metal_floor_by_goeshadow13-d5zy027.jpg")
@@ -29,6 +29,31 @@ class player1(Sprite):
 
     def __init__(self, position):
         super().__init__(player1.asset, position)
+        self.Moveleft=0
+    self.Moveright=0
+    BrickBreaker.listenKeyEvent("keydown", "space", self.Left)
+    BrickBreaker.listenKeyEvent("keyup", "space", self.Leftstop)
+    BrickBreaker.listenKeyEvent("keydown", "space", self.Right)
+    BrickBreaker.listenKeyEvent("keyup", "space", self.Rightstop)
+
+    def step(self):
+        if self.Moveleft==1:
+            self.x-=1
+        else:
+            self.x=self.x
+        if self.Moveright==1:
+            self.x+=1
+        else:
+            self.x=self.x
+
+    def Left(self, event):
+        self.Moveleft=1
+    def Leftstop(self, event):
+        self.Moveleft=0
+    def Right(self, event):
+        self.Moveright=1
+    def Rightstop(self, event):
+        self.Moveright=0
 class BrickBreaker(App):
     def __init__(self, width, height):
         super().__init__(width, height)
