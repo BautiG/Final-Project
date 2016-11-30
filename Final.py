@@ -30,19 +30,19 @@ class player1(Sprite):
     def __init__(self, position):
         super().__init__(player1.asset, position)
         self.Moveleft=0
-    self.Moveright=0
-    BrickBreaker.listenKeyEvent("keydown", "space", self.Left)
-    BrickBreaker.listenKeyEvent("keyup", "space", self.Leftstop)
-    BrickBreaker.listenKeyEvent("keydown", "space", self.Right)
-    BrickBreaker.listenKeyEvent("keyup", "space", self.Rightstop)
+        self.Moveright=0
+        BrickBreaker.listenKeyEvent("keydown", "left arrow", self.Left)
+        BrickBreaker.listenKeyEvent("keyup", "left arrow", self.Leftstop)
+        BrickBreaker.listenKeyEvent("keydown", "right arrow", self.Right)
+        BrickBreaker.listenKeyEvent("keyup", "right arrow", self.Rightstop)
 
     def step(self):
         if self.Moveleft==1:
-            self.x-=1
+            self.x=self.x-1
         else:
             self.x=self.x
         if self.Moveright==1:
-            self.x+=1
+            self.x=self.x+1
         else:
             self.x=self.x
 
@@ -54,6 +54,7 @@ class player1(Sprite):
         self.Moveright=1
     def Rightstop(self, event):
         self.Moveright=0
+
 class BrickBreaker(App):
     def __init__(self, width, height):
         super().__init__(width, height)
