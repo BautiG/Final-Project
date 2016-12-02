@@ -1,6 +1,6 @@
 """
 Author: Bauti Gallino
-Credit: Vinzent
+Credit: Vinzent, Liam S
 Background Image: http://img4.wikia.nocookie.net/__cb20140610025745/ravens-talon/images/a/af/Metal_floor_by_goeshadow13-d5zy027.jpg
 """
 from ggame import App, Sprite, ImageAsset, Frame
@@ -8,6 +8,7 @@ from ggame import SoundAsset, Sound, TextAsset, Color
 from ggame import App, Color, LineStyle, Sprite
 from ggame import RectangleAsset, CircleAsset, EllipseAsset, PolygonAsset
 import math
+import random
 
 red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
@@ -15,6 +16,11 @@ blue = Color(0x0000ff, 1.0)
 black = Color(0x000000, 1.0)
 
 thinborder=LineStyle(2, red)
+skinnyborder=LineStyle(2, blue)
+
+def crazy(digit, decimal):
+    randomout = round((random.random())*(10**digit), decimal)
+    return randomout
 
 class Background(Sprite):
     asset = ImageAsset("images/Metal_floor_by_goeshadow13-d5zy027.jpg")
@@ -29,31 +35,43 @@ class player1(Sprite):
 
     def __init__(self, position):
         super().__init__(player1.asset, position)
-        self.Moveleft=0
-        self.Moveright=0
+        self.Movex=0
         BrickBreaker.listenKeyEvent("keydown", "left arrow", self.Left)
         BrickBreaker.listenKeyEvent("keyup", "left arrow", self.Leftstop)
         BrickBreaker.listenKeyEvent("keydown", "right arrow", self.Right)
         BrickBreaker.listenKeyEvent("keyup", "right arrow", self.Rightstop)
 
     def step(self):
-        if self.Moveleft==1:
-            self.x=self.x-1
-        else:
-            self.x=self.x
-        if self.Moveright==1:
-            self.x=self.x+1
-        else:
-            self.x=self.x
+        self.x += self.Movex
 
     def Left(self, event):
-        self.Moveleft=1
+        self.Movex=-12
     def Leftstop(self, event):
-        self.Moveleft=0
+        self.Movex=0
     def Right(self, event):
-        self.Moveright=1
+        self.Movex=12
     def Rightstop(self, event):
-        self.Moveright=0
+        self.Movex=0
+        
+class ball(Sprite):
+    asset = CircleAsset(10, skinnyborder, green)
+    
+    def __init__(self, position):
+        super().__init__(ball.asset, position)
+        self.avy = 0
+        self.avx = 0
+        self.circularCollisionModel()
+
+        self.randomx = 0
+        self.randomy = 0
+        self.fxcenter = self.fycenter = 0.5
+        
+        self.randomx = crazy(0, 3)
+        self.randomy = crazy(0, 3)
+        self.avx = (self.randomx*-1)*6
+        self.avy = (self.randomy*-1)*6
+        self.x += self.avx
+        self.y += self.avy
 
 class BrickBreaker(App):
     def __init__(self, width, height):
@@ -62,7 +80,10 @@ class BrickBreaker(App):
             for y in range(self.height//Background.height + 1):
                 Background((x*Background.width, y*Background.height))
         Background((0, 0))
-        player1((800, 750))
-
-app = BrickBreaker(0, 0)
-app.run()
+        player1((800, 820))
+        ball((860, 410))
+    def step(self):
+        for ship in self.getSpritesbyClass(player1):
+            ship.step()
+        for ship in self.getSpritesbyClass(ball):
+            ship.step()
