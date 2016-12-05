@@ -64,14 +64,22 @@ class ball(Sprite):
         self.randomx = 0
         self.randomy = 0
         self.fxcenter = self.fycenter = 0.5
-        self.randomx = crazy(0, 3)
-        self.randomy = crazy(0, 3)
+        self.randomx = (crazy(0, 3)*-1)*6
+        if self.randomx<2:
+            self.randomx=2
+        self.randomy = (crazy(0, 3)*-1)*-6
+        if self.randomy<1.3:
+            self.randomy=1.3
+        if self.randomy>2:
+            self.randomy=2
 
     def step(self):
-        self.avx = (self.randomx*-1)*6
-        self.avy = (self.randomy*-1)*-6
+        self.avx = self.randomx
+        self.avy = self.randomy
         self.x += self.avx
         self.y += self.avy
+        if self.y<0:
+            self.avy*-1
 
 class BrickBreaker(App):
     def __init__(self, width, height):
