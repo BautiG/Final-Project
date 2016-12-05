@@ -61,15 +61,15 @@ class ball(Sprite):
         self.avy = 0
         self.avx = 0
         self.circularCollisionModel()
-
         self.randomx = 0
         self.randomy = 0
         self.fxcenter = self.fycenter = 0.5
-        
         self.randomx = crazy(0, 3)
         self.randomy = crazy(0, 3)
+
+    def step(self):
         self.avx = (self.randomx*-1)*6
-        self.avy = (self.randomy*-1)*6
+        self.avy = (self.randomy*-1)*-6
         self.x += self.avx
         self.y += self.avy
 
@@ -87,3 +87,6 @@ class BrickBreaker(App):
             ship.step()
         for ship in self.getSpritesbyClass(ball):
             ship.step()
+
+app = BrickBreaker(0, 0)
+app.run()
