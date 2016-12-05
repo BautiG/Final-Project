@@ -36,6 +36,7 @@ class player1(Sprite):
     def __init__(self, position):
         super().__init__(player1.asset, position)
         self.Movex=0
+        self.rectangularCollisionModel()
         BrickBreaker.listenKeyEvent("keydown", "left arrow", self.Left)
         BrickBreaker.listenKeyEvent("keyup", "left arrow", self.Leftstop)
         BrickBreaker.listenKeyEvent("keydown", "right arrow", self.Right)
@@ -64,22 +65,29 @@ class ball(Sprite):
         self.randomx = 0
         self.randomy = 0
         self.fxcenter = self.fycenter = 0.5
-        self.randomx = (crazy(0, 3)*-1)*6
+        self.randomx = crazy(0, 3)*-6
         if self.randomx<2:
             self.randomx=2
-        self.randomy = (crazy(0, 3)*-1)*-6
+        self.randomy = (crazy(0, 3)*-1)*6
         if self.randomy<1.3:
             self.randomy=1.3
         if self.randomy>2:
             self.randomy=2
-
-    def step(self):
         self.avx = self.randomx
         self.avy = self.randomy
+
+    def step(self):
         self.x += self.avx
         self.y += self.avy
-        if self.y<0:
-            self.avy*-1
+        if self.y > 0:
+            self.avy = self.avy*-1
+        if self.collidingWithSprites(ball):
+            self.avy = self.avy*-1
+        if self.x<0:
+            self.avx = self.avx*-1
+        if self.x>1000:
+            self.avx = self.avx*1
+        
 
 class BrickBreaker(App):
     def __init__(self, width, height):
