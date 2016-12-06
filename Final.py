@@ -77,8 +77,13 @@ class ball(Sprite):
         self.avy = self.randomy
 
     def step(self):
+        if self.collidingWithSprites(player1):
+            self.avy = self.avy*-1
+        if self.x>1000:
+            self.avx = self.avx*1
         self.x += self.avx
         self.y += self.avy
+"""
         if self.y > 0:
             self.avy = self.avy*-1
         if self.collidingWithSprites(ball):
@@ -87,7 +92,7 @@ class ball(Sprite):
             self.avx = self.avx*-1
         if self.x>1000:
             self.avx = self.avx*1
-        
+"""
 
 class BrickBreaker(App):
     def __init__(self, width, height):
