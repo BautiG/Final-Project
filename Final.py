@@ -94,6 +94,8 @@ class ball(Sprite):
             self.visible=False
         self.x += self.avx
         self.y += self.avy
+class Brick(sprite):
+    asset = RectangleAsset(130, 20, thinborder, blue)
 
 class BrickBreaker(App):
     def __init__(self, width, height):
