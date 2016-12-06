@@ -44,6 +44,11 @@ class player1(Sprite):
 
     def step(self):
         self.x += self.Movex
+        if self.x<30:
+            self.x=30
+        if self.x>1580:
+            self.x=1580
+        
 
     def Left(self, event):
         self.Movex=-12
@@ -66,13 +71,13 @@ class ball(Sprite):
         self.randomy = 0
         self.fxcenter = self.fycenter = 0.5
         self.randomx = crazy(0, 3)*-6
-        if self.randomx<4:
-            self.randomx=4
+        if self.randomx<6:
+            self.randomx=6
         self.randomy = (crazy(0, 3)*-1)*6
-        if self.randomy<1.6:
-            self.randomy=1.6
-        if self.randomy>4:
+        if self.randomy<4:
             self.randomy=4
+        if self.randomy>6:
+            self.randomy=6
         self.avx = self.randomx
         self.avy = self.randomy
 
