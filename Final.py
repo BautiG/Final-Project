@@ -79,18 +79,16 @@ class ball(Sprite):
     def step(self):
         if self.collidingWithSprites(player1):
             self.avy = self.avy*-1
-        if self.x>1730:
+        if self.x>1710:
             self.avx = self.avx*-1
+        if self.x<30:
+            self.avx = self.avx*-1
+        if self.y<30:
+            self.avy = self.avy*-1
+        if self.y>840:
+            self.visible=False
         self.x += self.avx
         self.y += self.avy
-"""
-        if self.y > 0:
-            self.avy = self.avy*-1
-        if self.collidingWithSprites(ball):
-            self.avy = self.avy*-1
-        if self.x<0:
-            self.avx = self.avx*-1
-"""
 
 class BrickBreaker(App):
     def __init__(self, width, height):
