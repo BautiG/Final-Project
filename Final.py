@@ -79,7 +79,7 @@ class ball(Sprite):
     def step(self):
         if self.collidingWithSprites(player1):
             self.avy = self.avy*-1
-        if self.x>1300:
+        if self.x>1730:
             self.avx = self.avx*-1
         self.x += self.avx
         self.y += self.avy
