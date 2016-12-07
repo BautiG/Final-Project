@@ -98,7 +98,7 @@ class ball(Sprite):
         self.x += self.avx
         self.y += self.avy
 class Brick(Sprite):
-    asset = RectangleAsset(500, 20, brickborder, red)
+    asset = RectangleAsset(1000, 100, brickborder, red)
     
     def __init__(self, position):
         super().__init__(Brick.asset, position)
