@@ -98,14 +98,15 @@ class ball(Sprite):
         self.x += self.avx
         self.y += self.avy
 class Brick(Sprite):
-    asset = RectangleAsset(1000, 100, brickborder, red)
+    asset = RectangleAsset(1000, 400, brickborder, red)
     
     def __init__(self, position):
         super().__init__(Brick.asset, position)
         self.rectangularCollisionModel()
     def step(self):
-        if self.collidingWithSprites(ball):
-            self.visible=False
+        if self.visible==True:
+            if self.collidingWithSprites(ball):
+                self.visible=False
 
 class BrickBreaker(App):
     def __init__(self, width, height):
