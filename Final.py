@@ -85,8 +85,6 @@ class ball(Sprite):
     def step(self):
         if self.collidingWithSprites(player1):
             self.avy = self.avy*-1
-        if self.collidingWithSprites(Brick):
-            self.avy = self.avy*-1
         if self.x>1710:
             self.avx = self.avx*-1
         if self.x<30:
