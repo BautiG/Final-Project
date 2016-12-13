@@ -104,9 +104,8 @@ class Brick(Sprite):
         super().__init__(Brick.asset, position)
         self.rectangularCollisionModel()
     def step(self):
-        if self.visible==True:
-            if self.collidingWithSprites(ball):
-                self.visible=False
+        if self.collidingWithSprites(ball):
+            self.visible=False
 
 class BrickBreaker(App):
     def __init__(self, width, height):
