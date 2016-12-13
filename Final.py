@@ -104,8 +104,7 @@ class Brick(Sprite):
     def step(self):
         if self.collidingWithSprites(ball):
             self.visible=False
-            if self.visible==False:
-                self.x=2000
+            self.x=2000
 
 class BrickBreaker(App):
     def __init__(self, width, height):
