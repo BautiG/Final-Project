@@ -18,7 +18,15 @@ black = Color(0x000000, 1.0)
 thinborder=LineStyle(2, red)
 skinnyborder=LineStyle(2, blue)
 brickborder=LineStyle(2, black)
+whatgame=input("1 for pong, 2 for brick breaker:")
 
+while whatgame!=1 or whatgame!=2:
+    if whatgame!=1 or whatgame!=2:
+        input("1 for pong, 2 for brick breaker")
+if whatgame==1:
+    print(pong)
+    
+"""
 def crazy(digit, decimal):
     randomout = round((random.random())*(10**digit), decimal)
     return randomout
@@ -83,6 +91,8 @@ class ball(Sprite):
         self.avy = self.randomy
 
     def step(self):
+        if self.collidingWithSprites(Brick):
+            self.avy = self.avy*-1
         if self.collidingWithSprites(player1):
             self.avy = self.avy*-1
         if self.x>1710:
@@ -126,3 +136,4 @@ class BrickBreaker(App):
 
 app = BrickBreaker(0, 0)
 app.run()
+"""
