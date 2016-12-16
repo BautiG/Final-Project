@@ -2,7 +2,7 @@
 Author: Bauti Gallino
 Credit: Vinzent, Liam S
 Background Image: http://img4.wikia.nocookie.net/__cb20140610025745/ravens-talon/images/a/af/Metal_floor_by_goeshadow13-d5zy027.jpg
-"""
+
 from ggame import App, Sprite, ImageAsset, Frame
 from ggame import SoundAsset, Sound, TextAsset, Color
 from ggame import App, Color, LineStyle, Sprite
@@ -18,11 +18,15 @@ black = Color(0x000000, 1.0)
 thinborder=LineStyle(2, red)
 skinnyborder=LineStyle(2, blue)
 brickborder=LineStyle(2, black)
+"""
 whatgame=input("1 for pong, 2 for brick breaker:")
 
-while whatgame!=1 or whatgame!=2:
+while notagame=2:
     if whatgame!=1 or whatgame!=2:
-        input("1 for pong, 2 for brick breaker")
+        whatgame=input("1 for pong, 2 for brick breaker")
+        notagame=2
+    else
+        notagame=1
 if whatgame==1:
     print(pong)
     
