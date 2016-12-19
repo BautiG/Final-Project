@@ -229,6 +229,8 @@ class ball(Sprite):
             self.avy = self.avy*-1
         if self.y>840:
             self.visible=False
+        self.avy=self.avy*1.001
+        self.avx=self.avx*1.001
         self.x += self.avx
         self.y += self.avy
 class Pong(App):
