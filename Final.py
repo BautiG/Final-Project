@@ -221,12 +221,13 @@ class ball(Sprite):
             self.avy = self.avy*-1
         if self.collidingWithSprites(player1):
             self.avy = self.avy*-1
+        
         if self.x>1710:
             self.avx = self.avx*-1
         if self.x<30:
             self.avx = self.avx*-1
         if self.y<30:
-            self.avy = self.avy*-1
+            self.visible=False
         if self.y>840:
             self.visible=False
         self.avy=self.avy*1.001
