@@ -173,10 +173,10 @@ class player2(Sprite):
         super().__init__(player1.asset, position)
         self.Movex=0
         self.rectangularCollisionModel()
-        Pong.listenKeyEvent("keydown", "left arrow", self.Left)
-        Pong.listenKeyEvent("keyup", "left arrow", self.Leftstop)
-        Pong.listenKeyEvent("keydown", "right arrow", self.Right)
-        Pong.listenKeyEvent("keyup", "right arrow", self.Rightstop)
+        Pong.listenKeyEvent("keydown", "a", self.Left)
+        Pong.listenKeyEvent("keyup", "a", self.Leftstop)
+        Pong.listenKeyEvent("keydown", "d", self.Right)
+        Pong.listenKeyEvent("keyup", "d", self.Rightstop)
 
     def step(self):
         self.x += self.Movex
