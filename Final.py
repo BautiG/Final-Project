@@ -170,7 +170,7 @@ class player2(Sprite):
     asset = RectangleAsset(130, 20, skinnyborder, red)
 
     def __init__(self, position):
-        super().__init__(player1.asset, position)
+        super().__init__(player2.asset, position)
         self.Movex=0
         self.rectangularCollisionModel()
         Pong.listenKeyEvent("keydown", "a", self.Left)
@@ -208,7 +208,7 @@ class ball(Sprite):
         self.randomx = crazy(0, 3)*-6
         if self.randomx<6:
             self.randomx=6
-        self.randomy = (crazy(0, 3)*-1)*6
+        self.randomy = crazy(0, 3)*6
         if self.randomy<4:
             self.randomy=4
         if self.randomy>6:
