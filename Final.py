@@ -158,8 +158,6 @@ class player1(Sprite):
             self.x=30
         if self.x>1580:
             self.x=1580
-        
-
     def Left(self, event):
         self.Movex=-12
     def Leftstop(self, event):
@@ -235,8 +233,8 @@ class ball(Sprite):
         if self.visible==False:
             self.x=860
             self.y=410
-            self.avx=self.randomx
-            self.avy=self.randomy
+            self.avx=crazy(0, 3)*-6
+            self.avy=crazy(0, 3)*6
             self.visible=True
         self.avy=self.avy*1.001
         self.avx=self.avx*1.001
