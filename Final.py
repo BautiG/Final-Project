@@ -232,6 +232,12 @@ class ball(Sprite):
             self.visible=False
         if self.y>840:
             self.visible=False
+        if self.visible==False:
+            self.x=860
+            self.y=410
+            self.avx=self.randomx
+            self.avy=self.randomy
+            self.visible=True
         self.avy=self.avy*1.001
         self.avx=self.avx*1.001
         self.x += self.avx
