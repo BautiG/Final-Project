@@ -14,6 +14,8 @@ red = Color(0xff0000, 1.0)
 green = Color(0x00ff00, 1.0)
 blue = Color(0x0000ff, 1.0)
 black = Color(0x000000, 1.0)
+white = Color(0xfffafa, 1.0)
+
 
 thinborder=LineStyle(2, red)
 skinnyborder=LineStyle(2, blue)
@@ -131,7 +133,7 @@ app = BrickBreaker(0, 0)
 app.run()
 """
 class Background(Sprite):
-    asset = ImageAsset("images/Metal_floor_by_goeshadow13-d5zy027.jpg")
+    asset = RectangleAsset(1727, 800, brickborder, white)
     height= 100
     width= 100
     
@@ -184,8 +186,6 @@ class player2(Sprite):
             self.x=30
         if self.x>1580:
             self.x=1580
-        
-
     def Left(self, event):
         self.Movex=-12
     def Leftstop(self, event):
