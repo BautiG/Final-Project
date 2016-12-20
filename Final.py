@@ -133,7 +133,7 @@ app = BrickBreaker(0, 0)
 app.run()
 """
 class Background(Sprite):
-    asset = RectangleAsset(1727, 800, brickborder, white)
+    asset = RectangleAsset(1727, 859, brickborder, white)
     height= 100
     width= 100
     
