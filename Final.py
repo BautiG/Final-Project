@@ -133,7 +133,7 @@ app = BrickBreaker(0, 0)
 app.run()
 """
 class Background(Sprite):
-    asset = RectangleAsset(1727, 859, brickborder, white)
+    asset = RectangleAsset(1697, 859, brickborder, white)
     height= 100
     width= 100
     
@@ -198,6 +198,8 @@ class ball(Sprite):
     
     def __init__(self, position):
         super().__init__(ball.asset, position)
+        self.score1=0
+        self.score2=0
         self.avy = 0
         self.avx = 0
         self.circularCollisionModel()
@@ -228,8 +230,12 @@ class ball(Sprite):
             self.avx = self.avx*-1
         if self.y<30:
             self.visible=False
+            self.score1=self.score1+1
+            print("player 1: {0} player 2: {1}".format(self.score1, self.score2))
         if self.y>840:
             self.visible=False
+            self.score2=self.score2+1
+            print("player 1: {0} player 2: {1}".format(self.score1, self.score2))
         if self.visible==False:
             self.x=860
             self.y=410
@@ -246,7 +252,7 @@ class Pong(App):
         for x in range(self.width//Background.width + 1):
             for y in range(self.height//Background.height + 1):
                 Background((x*Background.width, y*Background.height))
-        Background((0, 0))
+        Background((30, 0))
         player1((800, 820))
         player2((800,50))
         ball((860, 410))
