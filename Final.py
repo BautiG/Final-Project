@@ -27,7 +27,7 @@ def crazy(digit, decimal):
     return randomout
 """
 class Background(Sprite):
-    asset = ImageAsset("images/Metal_floor_by_goeshadow13-d5zy027.jpg")
+    asset = RectangleAsset(1682, 859, brickborder, white)
     height= 100
     width= 100
     
@@ -139,6 +139,7 @@ class Background(Sprite):
     
     def __init__(self, position):
         super().__init__(Background.asset, position)
+    print("player 1 is blue, player 2 is red:")
 
 class player1(Sprite):
     asset = RectangleAsset(130, 20, thinborder, blue)
