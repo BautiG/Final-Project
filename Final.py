@@ -21,13 +21,12 @@ thinborder=LineStyle(2, red)
 skinnyborder=LineStyle(2, blue)
 brickborder=LineStyle(2, black)
 
-
 def crazy(digit, decimal):
     randomout = round((random.random())*(10**digit), decimal)
     return randomout
-"""
+
 class Background(Sprite):
-    asset = RectangleAsset(1682, 859, brickborder, white)
+    asset = RectangleAsset(1697, 859, brickborder, white)
     height= 100
     width= 100
     
@@ -110,6 +109,8 @@ class Brick(Sprite):
         if self.collidingWithSprites(ball):
             self.visible=False
             self.x=2000
+            ball.avy = ball.avy*-1
+
 
 class BrickBreaker(App):
     def __init__(self, width, height):
@@ -117,10 +118,10 @@ class BrickBreaker(App):
         for x in range(self.width//Background.width + 1):
             for y in range(self.height//Background.height + 1):
                 Background((x*Background.width, y*Background.height))
-        Background((0, 0))
+        Background((30, 0))
         player1((800, 820))
         ball((860, 410))
-        Brick((0,0))
+        Brick((30,0))
     def step(self):
         for ship in self.getSpritesbyClass(player1):
             ship.step()
@@ -267,3 +268,4 @@ class Pong(App):
 
 app = Pong(0, 0)
 app.run()
+"""
