@@ -24,7 +24,7 @@ brickborder=LineStyle(2, black)
 def crazy(digit, decimal):
     randomout = round((random.random())*(10**digit), decimal)
     return randomout
-
+"""
 class Background(Sprite):
     asset = RectangleAsset(1697, 859, brickborder, white)
     height= 100
@@ -268,4 +268,3 @@ class Pong(App):
 
 app = Pong(0, 0)
 app.run()
-"""
